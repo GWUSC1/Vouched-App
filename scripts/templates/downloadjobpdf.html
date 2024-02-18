@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Job PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Download Job PDF</h1>
+        <form id="downloadForm" action="/download_job_pdf" method="post" class="form">
+            <div class="field">
+                <label for="job_id">Enter Job ID:</label>
+                <input type="text" id="job_id" name="job_id" required>
+            </div>
+            <div class="field">
+                <label for="confidences">Include Confidence Scores:</label>
+                <input type="checkbox" id="confidences" name="confidences" value="true" checked>
+            </div>
+            <div class="button">
+                <button type="submit">Download PDF</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("downloadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var form = document.getElementById("downloadForm");
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action);
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>

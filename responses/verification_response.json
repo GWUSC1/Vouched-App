@@ -1,0 +1,286 @@
+{
+    "status": 200,
+    "data": {
+        "total": 1,
+        "page": 1,
+        "pageSize": 100,
+        "totalPages": 1,
+        "items": [
+            {
+                "id": "6pGiMcTDX",
+                "status": "completed",
+                "completed": true,
+                "accountReviewed": true,
+                "submitted": "2024-02-16T03:18:45+00:00",
+                "updatedAt": "2024-02-16T03:19:51+00:00",
+                "reviewedAt": "2024-02-16T03:27:10+00:00",
+                "accountGroupSid": null,
+                "accountId": "Xcd6rRSI8",
+                "reviewSuccess": false,
+                "review": {
+                    "idValid": true,
+                    "selfieValid": true,
+                    "faceMatch": true,
+                    "nameMatch": false,
+                    "birthDateMatch": null,
+                    "firstName": null,
+                    "lastName": null,
+                    "docId": null,
+                    "idType": null,
+                    "birthDate": null,
+                    "expireDate": null,
+                    "state": null,
+                    "country": null
+                },
+                "request": {
+                    "type": "id-verification",
+                    "requestInfo": {
+                        "ipaddress": "104.28.144.235",
+                        "useragent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+                        "referer": "",
+                        "originalUrl": "/api/jobs/session",
+                        "method": "POST"
+                    },
+                    "parameters": {
+                        "selfieUri": "jobs/6pGiMcTDX/2OmKmQc_N.jpeg",
+                        "userDimensions": {
+                            "width": 1080,
+                            "height": 1920
+                        },
+                        "selfieDetectUri": "jobs/6pGiMcTDX/SosfnYDAW1.jpeg",
+                        "selfieDetectDimensions": {
+                            "width": 1024,
+                            "height": 1549
+                        },
+                        "idUri": "jobs/6pGiMcTDX/uFDUdk-QC.jpeg",
+                        "idDimensions": {
+                            "width": 1080,
+                            "height": 1920
+                        },
+                        "idTextUri": "jobs/6pGiMcTDX/0i7zdN-EI7.jpeg",
+                        "idTextDimensions": {
+                            "width": 1612,
+                            "height": 1024
+                        },
+                        "idAlignedUri": "jobs/6pGiMcTDX/Vz1vGAINVb.jpeg",
+                        "idAlignedDimensions": {
+                            "width": 1563,
+                            "height": 1027
+                        },
+                        "userDistanceUri": "jobs/6pGiMcTDX/4ustUR2vcq.jpeg",
+                        "userDistanceDimensions": {
+                            "width": 1080,
+                            "height": 1920
+                        },
+                        "email": "NOBODIES.NOTARIES@OUTLOOK.COM",
+                        "phone": "+16823815920",
+                        "firstName": "REBECCAH",
+                        "lastName": "HOLLAND"
+                    },
+                    "properties": [
+                        {
+                            "name": "vouched.first_name",
+                            "value": "REBECCAH"
+                        },
+                        {
+                            "name": "vouched.last_name",
+                            "value": "HOLLAND"
+                        },
+                        {
+                            "name": "vouched.phone",
+                            "value": "+16823815920"
+                        },
+                        {
+                            "name": "vouched.email",
+                            "value": "NOBODIES.NOTARIES@OUTLOOK.COM"
+                        }
+                    ]
+                },
+                "surveyPoll": null,
+                "surveyMessage": null,
+                "surveyAt": null,
+                "result": {
+                    "idRequireSide": null,
+                    "successWithSuggestion": true,
+                    "warnings": false,
+                    "idSide": "front",
+                    "idFields": [
+                        {
+                            "name": "firstName"
+                        },
+                        {
+                            "name": "lastName"
+                        },
+                        {
+                            "name": "birthDate"
+                        },
+                        {
+                            "name": "class"
+                        },
+                        {
+                            "name": "id"
+                        },
+                        {
+                            "name": "expireDate"
+                        },
+                        {
+                            "name": "issueDate"
+                        },
+                        {
+                            "name": "address"
+                        },
+                        {
+                            "name": "endorsements"
+                        }
+                    ],
+                    "id": "25885927",
+                    "firstName": "REBECCAH",
+                    "middleName": "MOLENE",
+                    "lastName": "HOLLAND",
+                    "crosscheck": null,
+                    "aml": null,
+                    "gender": {
+                        "gender": "woman",
+                        "genderDistribution": {
+                            "woman": null,
+                            "man": null
+                        }
+                    },
+                    "aamva": {
+                        "enabled": false,
+                        "hasErrors": false,
+                        "hasWarnings": false,
+                        "createdAt": null,
+                        "updatedAt": null,
+                        "status": "Not Applicable",
+                        "statusMessage": "",
+                        "completedAt": null,
+                        "confidenceScore": null
+                    },
+                    "dlv": {
+                        "dlvStatusMessage": "Not Applicable",
+                        "dlvCheckPerformed": false,
+                        "dlvEnabled": false,
+                        "result": null
+                    },
+                    "dob": "11/02/1991",
+                    "expireDate": "11/02/2029",
+                    "issueDate": "11/15/2021",
+                    "endorsements": "NONE",
+                    "motorcycle": null,
+                    "birthDate": "11/02/1991",
+                    "class": ": C",
+                    "address": "2719 Parkchester Drive, Arlington, TX 76015-1016",
+                    "eyeColor": "HAZ",
+                    "height": null,
+                    "weight": null,
+                    "ipAddress": null,
+                    "unverifiedIdAddress": [
+                        "2719",
+                        "PARKCHESTER DR ARLINGTON , TX 76015"
+                    ],
+                    "barcodeData": {},
+                    "idType": null,
+                    "ipFraudCheck": {
+                        "ipFraud": false,
+                        "count": 1,
+                        "jobIdList": [],
+                        "time": 20
+                    },
+                    "clientOutput": {
+                        "theme": "avant",
+                        "client": "JS Plugin",
+                        "capture": {
+                            "id": "automatic",
+                            "face_match": "automatic"
+                        },
+                        "includeBarcode": false
+                    },
+                    "geoLocation": null,
+                    "consent": {
+                        "timestamp": "Thu Feb 15 2024 21:19:09 GMT-0600 (Central Standard Time)",
+                        "consent": true,
+                        "method": "jsplugin"
+                    },
+                    "hasPDF417Back": true,
+                    "hasPDF417Front": null,
+                    "captureBackId": null,
+                    "idAddress": {
+                        "streetNumber": "2719",
+                        "street": "Parkchester Drive",
+                        "city": "Arlington",
+                        "state": "TX",
+                        "postalCode": "76015",
+                        "country": "USA",
+                        "postalCodeSuffix": "1016"
+                    },
+                    "type": "drivers-license",
+                    "state": "TX",
+                    "country": "US",
+                    "confidences": {
+                        "id": 0.9805,
+                        "selfie": 0.9999994506835937,
+                        "faceMatch": 0.999891857571072,
+                        "nameMatch": 1,
+                        "selfieSunglasses": 0,
+                        "selfieEyeglasses": 0,
+                        "idMatch": 1,
+                        "birthDateMatch": null,
+                        "idQuality": 0.9006,
+                        "idGlareQuality": 1,
+                        "idExpired": 1,
+                        "idCrosscheckDarkweb": null,
+                        "idCrosscheckActivity": null,
+                        "idCrosscheckIdentity": null,
+                        "idAml": null,
+                        "idFraud": null,
+                        "barcode": null,
+                        "barcodeMatch": null,
+                        "liveness": 1
+                    },
+                    "success": true,
+                    "featuresEnabled": {
+                        "aamvaEnabled": false,
+                        "aamvaBillable": false,
+                        "dlvEnabled": false,
+                        "dlvBillable": false,
+                        "crosscheckEnabled": false,
+                        "crosscheckBillable": false,
+                        "darkwebEnabled": false,
+                        "darkwebBillable": false,
+                        "idvBillable": true,
+                        "physicalAddressBillable": false,
+                        "ipAddressBillable": false,
+                        "faceMatchEnabled": false,
+                        "faceMatchBillable": false
+                    }
+                },
+                "errors": [],
+                "signals": [
+                    {
+                        "category": "selfie",
+                        "message": "Capture Type: automatic",
+                        "type": "capture",
+                        "fields": [],
+                        "property": "private"
+                    },
+                    {
+                        "category": "id",
+                        "message": "Device Info: iPhone",
+                        "type": "deviceInfo",
+                        "fields": [],
+                        "property": "private"
+                    },
+                    {
+                        "category": "id",
+                        "message": "Capture Type: automatic",
+                        "type": "capture",
+                        "fields": [],
+                        "property": "private"
+                    }
+                ]
+            }
+        ]
+    },
+    "message": "Data fetched successfully."
+}

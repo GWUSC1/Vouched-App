@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOB Verification</title>
+    <link rel="stylesheet" href="static/style2.css"> <!-- Use your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="title">DOB Verification Form</div>
+        <div class="content">
+            <form action="/verify_dob" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <label for="firstName">First Name:</label><br>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="lastName">Last Name:</label><br>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="phone">Phone:</label><br>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="dob">Date of Birth:</label><br>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Verify DOB">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

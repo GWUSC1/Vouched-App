@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Identity Verification</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Identity Verification</div>
+        <form action="/get_verification_response" method="post">
+            <div class="field" id="idField">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id">
+            </div>
+            <div class="button">
+                <input type="submit" value="Get Verification Jobs by ID" id="getByIdButton">
+            </div>
+        </form>
+        <form action="/get_verification_response" method="post">
+            <div class="button">
+                <input type="submit" value="Get All Verification Jobs">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
