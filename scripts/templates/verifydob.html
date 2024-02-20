@@ -1,0 +1,45 @@
+<!-- verifydob.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}"> <!-- Updated stylesheet link -->
+    <title>Verify Date of Birth</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Verify Date of Birth</div>
+        <div class="content">
+            <form method="post" action="/verify_dob">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone</span>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Date of Birth (YYYY-MM-DD)</span>
+                        <input type="text" id="dob" name="dob" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Verify DOB">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

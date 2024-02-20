@@ -1,98 +1,100 @@
+/* style.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            background: linear-gradient(135deg, maroon, white);
-        }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, rgb(183, 32, 37), white);
+}
 
-        .container {
-            max-width: 700px;
-            width: 100%;
-            background-color: #fff;
-            padding: 25px 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-        }
+.container {
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
 
-        .container .title {
-            font-size: 25px;
-            font-weight: 500;
-            position: relative;
-        }
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
 
-        .container .title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 30px;
-            border-radius: 5px;
-            background: linear-gradient(135deg, maroon, white);
-        }
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, rgb(183, 32, 37), white);
+}
 
-        .container .field {
-            margin-bottom: 20px;
-        }
+.container .field {
+    margin-bottom: 20px;
+}
 
-        .container .field label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
+.container .field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
 
-        .container .field input[type="text"],
-        .container .field input[type="email"],
-        .container .field input[type="tel"] {
-            height: 35px;
-            width: 100%;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding-left: 15px;
-            border: 1px solid #ccc;
-            border-bottom-width: 2px;
-            transition: all 0.3s ease;
-        }
+.container .field input[type="text"],
+.container .field input[type="email"],
+.container .field input[type="tel"] {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
 
-        .container .field input[type="text"]:focus,
-        .container .field input[type="text"]:valid,
-        .container .field input[type="email"]:focus,
-        .container .field input[type="email"]:valid,
-        .container .field input[type="tel"]:focus,
-        .container .field input[type="tel"]:valid {
-            border-color: maroon;
-        }
+.container .field input[type="text"]:focus,
+.container .field input[type="text"]:valid,
+.container .field input[type="email"]:focus,
+.container .field input[type="email"]:valid,
+.container .field input[type="tel"]:focus,
+.container .field input[type="tel"]:valid {
+    border-color: rgb(183, 32, 37);
+}
 
-        .container .button {
-            margin-top: 20px;
-        }
+.container .button {
+    margin-top: 20px;
+}
 
-        .container .button input[type="submit"] {
-            height: 45px;
-            width: 100%;
-            border-radius: 5px;
-            border: none;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, maroon, white);
-        }
+.container .button input[type="submit"] {
+    height: 45px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgb(183, 32, 37), white);
+}
 
-        .container .button input[type="submit"]:hover {
-            background: linear-gradient(135deg, maroon, white);
-        }
+.container .button input[type="submit"]:hover {
+    background: linear-gradient(135deg, rgb(183, 32, 37), white);
+}

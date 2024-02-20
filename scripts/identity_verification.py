@@ -4,6 +4,7 @@ import json
 import os
 from werkzeug.utils import secure_filename
 import base64
+import tempfile
 import logging
 
 # Defining a folder to store uploaded files
@@ -103,20 +104,58 @@ def download_job_pdf(job_id, confidences=True):
     response = requests.get(url, headers=headers, params=params)
     
     if response.status_code == 200:
-        pdf_data = response.json().get("pdf", None)
-        if pdf_data:
+        # Extract response data
+        response_data = response.json()
+        pdf_data_base64 = response_data.get("pdf")
+        if pdf_data_base64:
+            # Decode the base64-encoded PDF data
+            pdf_data = base64.b64decode(pdf_data_base64)
+            # Save the PDF data to a file
+            filename = f"downloaded_pdf_{job_id}.pdf"
+            try:
+                with open(filename, "wb") as f:
+                    f.write(pdf_data)
+                return {
+                    'status': 200,
+                    'message': 'PDF downloaded successfully.',
+                    'filename': filename  # Include the filename in the response
+                }
+            except Exception as e:
+                return {
+                    'status': 500,
+                    'message': f'Failed to save PDF file: {str(e)}'
+                }
+        else:
             return {
-                'status': 200,
-                'data': pdf_data,
-                'message': 'PDF downloaded successfully.'
+                'status': 404,
+                'message': 'No PDF data found in the response.'
             }
+    elif response.status_code == 400:
+        return {
+            'status': 400,
+            'message': 'Invalid request. Please check your parameters.'
+        }
+    elif response.status_code == 401:
+        return {
+            'status': 401,
+            'message': 'Authentication error. Please check your API key.'
+        }
+    elif response.status_code == 404:
+        return {
+            'status': 404,
+            'message': 'Job ID not found.'
+        }
+    elif response.status_code == 429:
+        return {
+            'status': 429,
+            'message': 'Too many requests. Please try again later.'
+        }
     else:
         return {
             'status': response.status_code,
-            'data': None,
-            'message': f'Failed to download PDF. Status code: {response.status_code}'
+            'message': f'Unknown error. Status code: {response.status_code}'
         }
-
+        
 
 def verify_ssn(firstName, lastName, email, phone, ssn, dob, address):
     url = "https://verify.vouched.id/api/private-ssn/verify"
@@ -155,9 +194,44 @@ def verify_ssn(firstName, lastName, email, phone, ssn, dob, address):
     return response_data
 
 
+def verify_dob(firstName, lastName, email, phone, dob):
+    url = "https://verify.vouched.id/api/dob/verify"
+    headers = {
+        "content-type": "application/json",
+        "accept": "application/json",
+        "X-API-Key": "TFk5Ig-X-~hXf2kRzMMbinS8__SFTZ"
+    }
+    payload = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "phone": phone,
+        "email": email,
+        "dob": dob
+    }
+    response = requests.post(url, json=payload, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        status_code = response.status_code
+        message = 'DOB verification successful.'
+    else:
+        data = None
+        status_code = response.status_code
+        error_message = response.json()["errors"][0]["message"]  # Extracting the error message
+        message = f'DOB verification failed. Status code: {status_code}. Error: {error_message}'
+
+    response_data = {
+        'status': status_code,
+        'data': data,
+        'message': message
+    }
+    
+    return response_data    
+
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('vertical_tabs.html')
 
 
 @app.route('/get_verification_response', methods=['GET', 'POST'])
@@ -223,24 +297,24 @@ def submit_verification_jobs():
 @app.route('/download_job_pdf', methods=['GET', 'POST'])
 def download_job():
     if request.method == 'POST':
-        job_id = request.args.get('id')
+        job_id = request.args.get('job_id')
         confidences = request.args.get('confidences', default=True, type=bool)
         
-        # Call the function to get the PDF data
+        # Calling the function to get the PDF data
         pdf_result = download_job_pdf(job_id, confidences)
         if pdf_result['status'] == 200:
-            # Decode the base64-encoded PDF data
+            # Decoding the base64-encoded PDF data
             pdf_data = base64.b64decode(pdf_result['data'])
-            # Create a temporary file path to save the PDF
-            temp_file = f'temp_job_{job_id}.pdf'
-            # Write the PDF data to the temporary file
-            with open(temp_file, 'wb') as f:
+            # Creating a temporary file path to save the PDF in the /tmp directory
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf', dir='/tmp') as f:
+                temp_file = f.name
                 f.write(pdf_data)
-            # Return the PDF file as an attachment
-            return send_file(temp_file, as_attachment=True)
+            # Returning the PDF file as an attachment
+            return send_file(temp_file, as_attachment=True, mimetype='application/pdf')
+
         else:
             return pdf_result['message']
-    # Render the template for GET requests
+    # Rendering the template for GET requests
     return render_template('downloadjobpdf.html')
 
 
@@ -267,9 +341,9 @@ def verify_ssn_route():
         return render_template('verifyssn.html')
 
 
-@app.route('/verify_dob', methods=['GET','POST'])
-def verify_dob():
-    print("Matched Path:", request.path)
+# Route for verifying Date of Birth
+@app.route('/verify_dob', methods=['GET', 'POST'])  # Allow both GET and POST requests
+def verify_dob_route():
     if request.method == 'POST':
         # Extract form data
         firstName = request.form['firstName']
@@ -278,36 +352,15 @@ def verify_dob():
         phone = request.form['phone']
         dob = request.form['dob']
         
-        # Make a POST request to the DOB verification API
-        url = "https://verify.vouched.id/api/dob/verify"
-        headers = {
-            "content-type": "application/json",
-            "accept": "application/json",
-            "X-API-Key": "TFk5Ig-X-~hXf2kRzMMbinS8__SFTZ"
-        }
-        payload = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "phone": phone,
-            "dob": dob
-        }
-        response = requests.post(url, json=payload, headers=headers)
+        # Call the verify_dob function with the form data
+        result = verify_dob(firstName, lastName, email, phone, dob)
         
-        # Process the response
-        if response.status_code == 200:
-            result = response.json()
-            return render_template('dob_verification_result.html', result=result)
-        else:
-            error_message = response.json()["errors"][0]["message"]
-            return f"Error: {error_message}", 500
+        # Render the verifydobresponse.html template and pass the response data as context
+        return render_template('verifydobresponse.html', response=result)
     else:
-        return "Method Not Allowed", 405
+        # If a GET request is made to this route, render the form
+        return render_template('verifydob.html')
 
-
-@app.route('/route_urls')
-def route_urls():
-    return render_template('vertical_tabs.html')
 
 # Add cache-control headers for static files
 @app.after_request
@@ -320,4 +373,6 @@ def add_cache_control(response):
 if __name__ == '__main__':
     # result = submit_verification_job("Louis", "White", "mamaloco79@gmail.com", "+16822979509")
     # print(result)
+    result = download_job_pdf("6pGiMcTDX")
+    print(result)
     app.run(debug=True)

@@ -21,10 +21,10 @@
     
     .vertical-mdl-tabs {
         margin-top: 0;
-        width: 300px; /* Expanded width */
-        height: 100vh; /* Full screen height */
-        background-color: #f0f0f0; /* Background color for the sidebar */
-        padding-top: 20px; /* Adjust as needed */
+        width: 300px;
+        height: 100vh; 
+        background-color: #f0f0f0; 
+        padding-top: 20px; 
     }
     
     .vertical-mdl-tabs .mdl-tabs__tab-bar {
@@ -40,12 +40,13 @@
         line-height: 35px;
         box-sizing: border-box;
         letter-spacing: 2px;
-        border: none; /* Remove border */
-        background-color: transparent; /* Remove background color */
-        cursor: pointer; /* Change cursor to pointer */
-        padding: 5px 20px; /* Adjust padding as needed */
-        text-align: left; /* Align text to the left */
-        color: maroon; /* Maroon color for the button text */
+        border: none; 
+        background-color: transparent; 
+        cursor: pointer; 
+        padding: 5px 20px;
+        text-align: left; 
+        color: rgb(183, 32, 37); 
+        font-size: 16px;
     }
     
     .vertical-mdl-tabs .mdl-tabs__tab:hover {
@@ -77,18 +78,37 @@
     .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
         color: #E21549;
     }
+
+    .header {
+        padding: 16px;
+        background-color: white; 
+        display: flex;
+        justify-content: left; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        width: 18%;
+        height: 18%;
+    }
 </style>
 </head>
 <body>
 
+<!-- Header with Logo -->
+<header class="header">
+    <img src="static/images/usc-logo.png" alt="Logo" class="logo">
+</header>
+
 <!-- Sidebar with Tab links -->
 <div class="vertical-mdl-tabs">
-    <button class="mdl-tabs__tab" onclick="window.location.href='/'">Index</button>
-    <button class="mdl-tabs__tab" onclick="window.location.href='/get_verification_response'">Get Verification Response</button>
+    <button class="mdl-tabs__tab" onclick="window.location.href='/get_verification_response'">Get Verification Jobs</button>
     <button class="mdl-tabs__tab" onclick="window.location.href='/submit_verification_jobs'">Submit Verification Jobs</button>
     <button class="mdl-tabs__tab" onclick="window.location.href='/download_job_pdf'">Download Job PDF</button>
     <button class="mdl-tabs__tab" onclick="window.location.href='/verify_ssn'">Verify SSN</button>
+    <button class="mdl-tabs__tab" onclick="window.location.href='/verify_dob'">Verify Date Of Birth</button>
 </div>
+
 
 </body>
 </html>

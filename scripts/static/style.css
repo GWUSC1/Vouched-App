@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, maroon, white);
+  background: linear-gradient(135deg, rgb(183, 32, 37), white);
 }
 
 .container {
@@ -41,7 +41,7 @@ body {
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, maroon, white);
+  background: linear-gradient(135deg, rgb(183, 32, 37), white);
 }
 
 .container .field {
@@ -74,7 +74,7 @@ body {
 .container .field input[type="email"]:valid,
 .container .field input[type="tel"]:focus,
 .container .field input[type="tel"]:valid {
-    border-color: maroon;
+    border-color: rgb(183, 32, 37);
 }
 
 .container .button {
@@ -92,14 +92,9 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, maroon, white);
+    background: linear-gradient(135deg, rgb(183, 32, 37), white);
 }
 
 .container .button input[type="submit"]:hover {
-    background: linear-gradient(135deg, maroon, white);
+    background: linear-gradient(135deg, rgb(183, 32, 37), white);
 }
-
-
-
-
-/* background-color: rgb(183, 32, 37); */

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOB Response</title>
+</head>
+<body>
+    <h1>Verification Response</h1>
+    <table border="1">
+        <tr>
+            <th>Status Code</th>
+            <td>{{ response.status }}</td>
+        </tr>
+        <tr>
+            <th>Status Message</th>
+            <td>{{ response.message }}</td>
+        </tr>
+        <tr>
+            <th>Data</th>
+            <td>
+                <pre>{{ response.data | tojson(indent=4) }}</pre>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

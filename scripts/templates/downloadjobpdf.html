@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Job PDF</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
 </head>
 <body>
     <div class="container">
         <h1 class="title">Download Job PDF</h1>
         <form id="downloadForm" action="/download_job_pdf" method="post" class="form">
             <div class="field">
-                <label for="job_id">Enter Job ID:</label>
-                <input type="text" id="job_id" name="job_id" required>
+                <label for="id">Enter Job ID:</label>
+                <input type="text" id="id" name="id" required>
             </div>
             <div class="field">
                 <label for="confidences">Include Confidence Scores:</label>
                 <input type="checkbox" id="confidences" name="confidences" value="true" checked>
             </div>
             <div class="button">
-                <button type="submit">Download PDF</button>
+                <input type="submit" value="Download PDF">
             </div>
         </form>
     </div>
@@ -31,8 +31,22 @@
             var formData = new FormData(form);
             var xhr = new XMLHttpRequest();
             xhr.open("POST", form.action);
+            xhr.responseType = "blob";  // Setting response type to Blob
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var blob = new Blob([xhr.response], { type: "application/pdf" });
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement("a");
+                    a.href = url;
+                    a.download = "downloaded_pdf.pdf"; // Force browser to download the file
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+            };
             xhr.send(formData);
         });
+        
     </script>
 </body>
 </html>
