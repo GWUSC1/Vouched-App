@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Response</title>
+    <title>Submit ID Doc Response</title>
     <style>
         /* CSS styling */
 
@@ -21,7 +21,8 @@
             align-items: center;
             padding: 10px;
             margin-bottom: 30px;
-        }
+
+          }
         /* Table styling */
         table {
             border-collapse: collapse;
@@ -40,22 +41,26 @@
     </style>
 </head>
 <body>
-    <h1>ID Verification Response</h1>
-    <table border="1">
-        <tr>
-            <th>Status Code</th>
-            <td>{{ response.status }}</td>
-        </tr>
-        <tr>
-            <th>Status Message</th>
-            <td>{{ response.message }}</td>
-        </tr>
-        <tr>
-            <th>Data</th>
-            <td>
-                <pre>{{ response.data | tojson(indent=4) }}</pre>
-            </td>
-        </tr>
-    </table>
+    <h1>Supported ID Documents</h1>
+    {% if data %}
+        <div class="container">
+            <table border="1">
+                <tr>
+                    <th>Type</th>
+                    <th>Country</th>
+                    <th>State</th>
+                </tr>
+                {% for document in data %}
+                <tr>
+                    <td>{{ document.type }}</td>
+                    <td>{{ document.country }}</td>
+                    <td>{{ document.state or 'N/A' }}</td>  <!-- Handle potential 'state' being None -->
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <p>No supported ID documents available.</p>
+    {% endif %}
 </body>
 </html>

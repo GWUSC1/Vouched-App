@@ -229,6 +229,24 @@ def verify_dob(firstName, lastName, email, phone, dob):
     return response_data    
 
 
+def get_supported_id_documents():
+    url = "https://verify.vouched.id/api/identity/documents"
+    
+    headers = {
+        "accept": "application/json; charset=utf-8",
+        "X-API-Key": "TFk5Ig-X-~hXf2kRzMMbinS8__SFTZ"
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+        data = response.json()
+        return data.get('documents', [])  # Ensure data is not None, return empty list if None
+    except requests.exceptions.RequestException as e:
+        print("Error fetching supported ID documents:", e)
+        return [] 
+
+
 @app.route('/')
 def index():
     return render_template('vertical_tabs.html')
@@ -362,6 +380,18 @@ def verify_dob_route():
         return render_template('verifydob.html')
 
 
+@app.route('/supported_id_documents', methods=['GET', 'POST'])
+def supported_id_documents():
+    if request.method == 'POST':
+        data = get_supported_id_documents()
+        if data is not None:
+            return render_template('supportidDocresponse.html', data=data)
+        else:
+            flash("Failed to fetch supported ID documents. Please try again later.")
+            return redirect(url_for('index'))  # Redirect to the index page or another suitable page
+    return render_template('supported_id_documents.html')  
+
+    
 # Add cache-control headers for static files
 @app.after_request
 def add_cache_control(response):
@@ -372,7 +402,7 @@ def add_cache_control(response):
 
 if __name__ == '__main__':
     # result = submit_verification_job("Louis", "White", "mamaloco79@gmail.com", "+16822979509")
+    # # print(result)
+    # result = download_job_pdf("6pGiMcTDX")
     # print(result)
-    result = download_job_pdf("6pGiMcTDX")
-    print(result)
     app.run(debug=True)

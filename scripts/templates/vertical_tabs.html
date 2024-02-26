@@ -9,87 +9,196 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
     }
-    /* Vertical Tabs */
-    .mdl-tabs__panel {
-        display: none;
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background: linear-gradient(135deg, rgb(183, 32, 37), white);
     }
-    
+
+    .header {
+        padding: 16px;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        width: 100%;
+        max-width: 150px; /* Adjust the maximum width of the logo */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .content {
+        display: flex;
+        flex: 1;
+    }
+
     .vertical-mdl-tabs {
-        margin-top: 0;
         width: 300px;
-        height: 100vh; 
-        background-color: #f0f0f0; 
-        padding-top: 20px; 
+        height: 100%;
+        background-color: #f0f0f0;
+        padding-top: 20px;
     }
-    
+
     .vertical-mdl-tabs .mdl-tabs__tab-bar {
         display: flex;
         flex-direction: column;
         padding-bottom: 35px;
         border-bottom: none;
     }
-    
+
     .vertical-mdl-tabs .mdl-tabs__tab {
         width: 100%;
         height: 35px;
         line-height: 35px;
         box-sizing: border-box;
         letter-spacing: 2px;
-        border: none; 
-        background-color: transparent; 
-        cursor: pointer; 
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
         padding: 5px 20px;
-        text-align: left; 
-        color: rgb(183, 32, 37); 
+        text-align: left;
+        color: rgb(183, 32, 37);
         font-size: 16px;
     }
-    
+
     .vertical-mdl-tabs .mdl-tabs__tab:hover {
         background: rgba(158, 158, 158, 0.34);
         color: black;
     }
-    
+
     .vertical-mdl-tabs.mdl-tabs.is-upgraded a.mdl-tabs__tab.is-active {
         border-right: 3px solid #ED462F;
     }
-    
+
     .vertical-mdl-tabs.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
         content: inherit;
         height: 0;
     }
-    
-    .vertical-mdl-tabs.mdl-tabs.is-upgraded .mdl-tabs__panel.is-active, .mdl-tabs__panel {
+
+    .vertical-mdl-tabs.mdl-tabs.is-upgraded .mdl-tabs__panel.is-active,
+    .mdl-tabs__panel {
         padding: 0 30px;
     }
-    
+
     .vertical-mdl-tabs.mdl-tabs .mdl-tabs__tab {
         text-align: left;
     }
-    
+
     .text-center {
         text-align: center;
     }
-    
-    .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
-        color: #E21549;
+
+    .forms {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto; /* Add overflow for scrolling if necessary */
     }
 
-    .header {
-        padding: 16px;
-        background-color: white; 
+    /* Additional styling for the forms */
+    .container {
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .container .title {
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .container .title::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        border-radius: 5px;
+        background: linear-gradient(135deg, rgb(183, 32, 37), white);
+    }
+
+    .container .field {
+        margin-bottom: 20px;
+    }
+
+    .container .field label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .container .field input[type="text"],
+    .container .field input[type="email"],
+    .container .field input[type="tel"],
+    .container .field input[type="file"] { /* Added input[type="file"] styling */
+        height: 35px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .container .field input[type="text"]:focus,
+    .container .field input[type="text"]:valid,
+    .container .field input[type="email"]:focus,
+    .container .field input[type="email"]:valid,
+    .container .field input[type="tel"]:focus,
+    .container .field input[type="tel"]:valid,
+    .container .field input[type="file"]:focus,
+    .container .field input[type="file"]:valid { /* Added input[type="file"] styling */
+        border-color: rgb(183, 32, 37);
+    }
+
+    .container .button {
+        margin-top: 20px;
+    }
+
+    .container .button input[type="submit"] {
+        height: 45px;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, rgb(183, 32, 37), white);
+    }
+
+    .container .button input[type="submit"]:hover {
+        background: linear-gradient(135deg, rgb(183, 32, 37), white);
+    }
+
+    .field-group {
         display: flex;
-        justify-content: left; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        justify-content: space-between;
+        margin-bottom: 15px;
     }
-
-    .logo {
-        width: 18%;
-        height: 18%;
+    
+    .field {
+        flex: 1;
+        margin-right: 10px;
+    }
+    
+    .field:last-child {
+        margin-right: 0;
     }
 </style>
 </head>
@@ -100,15 +209,262 @@
     <img src="static/images/usc-logo.png" alt="Logo" class="logo">
 </header>
 
-<!-- Sidebar with Tab links -->
-<div class="vertical-mdl-tabs">
-    <button class="mdl-tabs__tab" onclick="window.location.href='/get_verification_response'">Get Verification Jobs</button>
-    <button class="mdl-tabs__tab" onclick="window.location.href='/submit_verification_jobs'">Submit Verification Jobs</button>
-    <button class="mdl-tabs__tab" onclick="window.location.href='/download_job_pdf'">Download Job PDF</button>
-    <button class="mdl-tabs__tab" onclick="window.location.href='/verify_ssn'">Verify SSN</button>
-    <button class="mdl-tabs__tab" onclick="window.location.href='/verify_dob'">Verify Date Of Birth</button>
+<!-- Content Section -->
+<div class="content">
+    <!-- Sidebar with Tab links -->
+    <div class="vertical-mdl-tabs">
+        <button class="mdl-tabs__tab" onclick="showForm('get_verification_response')">Get Verification Jobs</button>
+        
+        <button class="mdl-tabs__tab" onclick="showForm('submit_verification_jobs')">Submit Verification Jobs</button>
+    
+        <button class="mdl-tabs__tab" onclick="showForm('download_job_pdf')">Download Job PDF</button>
+        
+        <button class="mdl-tabs__tab" onclick="showForm('verify_ssn')">Verify SSN</button>
+
+        <button class="mdl-tabs__tab" onclick="showForm('verify_dob')">Verify Date Of Birth</button>
+        
+        <button class="mdl-tabs__tab" onclick="showForm('supported_id_documents')">Get Supported ID Documents</button>
+        
+    </div>
+
+    <!-- Forms -->
+    <div id="get_verification_response" class="forms" style="display: none;">
+        <!-- Form for Get Verification Jobs -->
+        <div class="container">
+            <div class="title">Identity Verification</div>
+            <form action="/get_verification_response" method="post">
+                <div class="field" id="idField">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Get Verification Jobs by ID" id="getByIdButton">
+                </div>
+            </form>
+            <form action="/get_verification_response" method="post">
+                <div class="button">
+                    <input type="submit" value="Get All Verification Jobs">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Form for Submit Verification Jobs -->
+    <div id="submit_verification_jobs" class="forms" style="display: none;">
+        <div class="container">
+            <div class="title">Submit Verification Jobs</div>
+            <form action="/submit_verification_jobs" method="post" enctype="multipart/form-data">
+                <div class="field-group">
+                    <div class="field">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="idPhoto">ID Photo:</label>
+                        <input type="file" id="idPhoto" name="idPhoto" accept="image/*" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        
+    </div>
+
+    <!-- Form for Downloading Job PDF -->
+    <div id="download_job_pdf" class="forms" style="display: none;">
+        <div class="container">
+            <!-- Form content for Download Job PDF -->
+            <h1 class="title">Download Job PDF</h1>
+            <form id="downloadForm" action="/download_job_pdf" method="post" class="form">
+                <div class="field">
+                    <label for="id">Enter Job ID:</label>
+                    <input type="text" id="id" name="id" required>
+                </div>
+                <div class="field">
+                    <label for="confidences">Include Confidence Scores:</label>
+                    <input type="checkbox" id="confidences" name="confidences" value="true" checked>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Download PDF">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="verify_ssn" class="forms" style="display: none;">
+        <!-- SSN Verification Form -->
+        <div class="container">
+            <div class="title">SSN Verification Form</div>
+            <form method="post" action="/verify_ssn" enctype="multipart/form-data">
+                <div class="field-group">
+                    <div class="field">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="ssn">SSN:</label>
+                        <input type="text" id="ssn" name="ssn" placeholder="Enter your SSN" required>
+                    </div>
+                    <div class="field">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>        
+    </div>
+
+    <!-- Form for Verify Date of Birth -->
+    <div id="verify_dob" class="forms" style="display: none;">
+        <div class="container">
+            <div class="title">Verify Date of Birth</div>
+            <form method="post" action="/verify_dob">
+                <div class="field-group">
+                    <div class="field">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Verify DOB">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="supported_id_documents" class="forms" style="display: none;">
+        <div class="container">
+            <div class="title">Supported ID Documents</div>
+            <form action="/supported_id_documents" method="post">
+                <div class="button">
+                    <input type="submit" value="Get Supported ID Documents" id="supportedIdDocumentButton">
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 
+
+<!-- JavaScript code for download pdf-->
+<script>
+    document.getElementById("downloadForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Serialize form data
+        var formData = new FormData(this);
+        
+        // Send form data asynchronously via AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.action, true);
+        xhr.responseType = "blob"; // Set response type to Blob
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Create blob URL for the response
+                var blob = new Blob([xhr.response], { type: "application/pdf" });
+                var url = window.URL.createObjectURL(blob);
+                
+                // Create a link element and trigger download
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "downloaded_pdf.pdf"; // Set downloaded file name
+                document.body.appendChild(a);
+                a.click();
+                
+                // Cleanup
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                alert("Error downloading PDF: " + xhr.statusText);
+            }
+        };
+        xhr.onerror = function() {
+            alert("Network error");
+        };
+        xhr.send(formData);
+    });
+</script>
+
+<!-- JavaScript -->
+<script>
+    function showForm(formId) {
+        // Hide all forms
+        var forms = document.getElementsByClassName("forms");
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = "none";
+        }
+        // Show the selected form
+        document.getElementById(formId).style.display = "block";
+    
+        // Close the tab menu (only for small screens)
+        if (window.innerWidth <= 768) {
+            document.querySelector('.vertical-mdl-tabs').style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Supported Id Documents</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Supported Id Documents</div>
+        <form action="/supported_id_documents" method="post">
+            
+            <div class="button">
+                <input type="submit" value="Get Supported ID Documents" id="supportedIdDocumentButton">
+            </div>
+        </form>
+       
+    </div>
+
+</body>
+</html>
